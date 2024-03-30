@@ -58,7 +58,7 @@ const locations = [
 		id: "rome",
 		label: "Rome",
 	},
-] as const;
+];
 
 const importantAspectsNewRole = [
 	{
@@ -101,18 +101,40 @@ const importantAspectsNewRole = [
 		id: "work-autonomy",
 		label: "Autonomy in Work",
 	},
-] as const;
+];
 
 const industries = [
-	{
-		id: "education",
-		label: "Education",
-	},
-	{
-		id: "healthcare",
-		label: "Healthcare",
-	},
-] as const;
+	{ id: "AI", label: "AI" },
+	{ id: "Aerospace", label: "Aerospace" },
+	{ id: "Construction", label: "Construction" },
+	{ id: "Consumer", label: "Consumer" },
+	{ id: "Crypto", label: "Crypto" },
+	{ id: "Data", label: "Data" },
+	{ id: "Education", label: "Education" },
+	{ id: "Energy", label: "Energy" },
+	{ id: "Finance", label: "Finance" },
+	{ id: "Fitness", label: "Fitness" },
+	{ id: "Food", label: "Food" },
+	{ id: "HR", label: "HR" },
+	{ id: "Hardware", label: "Hardware" },
+	{ id: "Healthcare", label: "Healthcare" },
+	{ id: "Infrastructure", label: "Infrastructure" },
+	{ id: "Legal", label: "Legal" },
+	{ id: "Logistics", label: "Logistics" },
+	{ id: "Manufacturing", label: "Manufacturing" },
+	{ id: "Marketing", label: "Marketing" },
+	{ id: "Media", label: "Media" },
+	{ id: "Other", label: "Other" },
+	{ id: "Product", label: "Product" },
+	{ id: "Real Estate", label: "Real Estate" },
+	{ id: "Recruiting", label: "Recruiting" },
+	{ id: "Retail", label: "Retail" },
+	{ id: "Sales", label: "Sales" },
+	{ id: "Security", label: "Security" },
+	{ id: "Support", label: "Support" },
+	{ id: "Transportation", label: "Transportation" },
+	{ id: "Travel", label: "Travel" },
+];
 
 const FormSchema = z.object({
 	locations: z.array(z.string()).refine((value) => value.some((item) => item), {
