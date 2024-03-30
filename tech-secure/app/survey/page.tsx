@@ -115,28 +115,27 @@ const industries = [
 ] as const;
 
 const FormSchema = z.object({
-	items: z.array(z.string()).refine((value) => value.some((item) => item), {
+	locations: z.array(z.string()).refine((value) => value.some((item) => item), {
 		message: "You have to select at least one item.",
 	}),
+	importantAspectsNewRole: z
+		.array(z.string())
+		.refine((value) => value.some((item) => item), {
+			message: "You have to select at least one item.",
+		}),
+	industries: z
+		.array(z.string())
+		.refine((value) => value.some((item) => item), {
+			message: "You have to select at least one item.",
+		}),
 });
 
 export default function Survey() {
 	const form = useForm<z.infer<typeof FormSchema>>({
 		resolver: zodResolver(FormSchema),
-		defaultValues: {
-			items: ["recents", "home"],
-		},
 	});
 
 	function onSubmit(data: z.infer<typeof FormSchema>, e: any) {
-		// toast({
-		// 	title: "You submitted the following values:",
-		// 	description: (
-		// 		<pre className='mt-2 w-[340px] rounded-md bg-slate-950 p-4'>
-		// 			<code className='text-white'>{JSON.stringify(data, null, 2)}</code>
-		// 		</pre>
-		// 	),
-		// });
 		e.preventDefault();
 		console.log(data);
 	}
@@ -145,7 +144,7 @@ export default function Survey() {
 			<form onSubmit={form.handleSubmit(onSubmit)} className='space-y-8'>
 				<FormField
 					control={form.control}
-					name='items'
+					name='locations'
 					render={() => (
 						<FormItem>
 							<div className='mb-4'>
@@ -156,7 +155,7 @@ export default function Survey() {
 								<FormField
 									key={item.id}
 									control={form.control}
-									name='items'
+									name='locations'
 									render={({ field }) => {
 										return (
 											<FormItem
@@ -191,7 +190,7 @@ export default function Survey() {
 				/>
 				<FormField
 					control={form.control}
-					name='items'
+					name='importantAspectsNewRole'
 					render={() => (
 						<FormItem>
 							<div className='mb-4'>
@@ -239,7 +238,7 @@ export default function Survey() {
 				/>
 				<FormField
 					control={form.control}
-					name='items'
+					name='industries'
 					render={() => (
 						<FormItem>
 							<div className='mb-4'>
