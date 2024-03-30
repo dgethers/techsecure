@@ -178,15 +178,22 @@ export default function Survey() {
 
 	return (
 		<Form {...form}>
-			<form onSubmit={form.handleSubmit(onSubmit)} className='space-y-8'>
+			<form
+				onSubmit={form.handleSubmit(onSubmit)}
+				className='space-y-8 bg-white shadow-md rounded-lg px-8 pt-6 pb-8 mb-4'
+			>
 				<FormField
 					control={form.control}
 					name='locations'
 					render={() => (
-						<FormItem>
+						<FormItem className='bg-gray-50 p-4 rounded-lg shadow-sm'>
 							<div className='mb-4'>
-								<FormLabel className='text-base'>Location</FormLabel>
-								<FormDescription>Where would you like to work?</FormDescription>
+								<FormLabel className='block text-gray-700 text-2xl font-bold mb-2'>
+									Location
+								</FormLabel>
+								<FormDescription className='text-gray-600 text-xl'>
+									Where would you like to work?
+								</FormDescription>
 							</div>
 							{locations.map((item) => (
 								<FormField
@@ -197,7 +204,7 @@ export default function Survey() {
 										return (
 											<FormItem
 												key={item.id}
-												className='flex flex-row items-start space-x-3 space-y-0'
+												className='flex flex-row items-center space-x-3'
 											>
 												<FormControl>
 													<Checkbox
@@ -213,55 +220,7 @@ export default function Survey() {
 														}}
 													/>
 												</FormControl>
-												<FormLabel className='font-normal'>
-													{item.label}
-												</FormLabel>
-											</FormItem>
-										);
-									}}
-								/>
-							))}
-							<FormMessage />
-						</FormItem>
-					)}
-				/>
-				<FormField
-					control={form.control}
-					name='importantAspectsNewRole'
-					render={() => (
-						<FormItem>
-							<div className='mb-4'>
-								<FormLabel className='text-base'>Culture</FormLabel>
-								<FormDescription>
-									What is most important to you?
-								</FormDescription>
-							</div>
-							{importantAspectsNewRole.map((item) => (
-								<FormField
-									key={item.id}
-									control={form.control}
-									name='importantAspectsNewRole'
-									render={({ field }) => {
-										return (
-											<FormItem
-												key={item.id}
-												className='flex flex-row items-start space-x-3 space-y-0'
-											>
-												<FormControl>
-													<Checkbox
-														checked={field.value?.includes(item.id)}
-														onCheckedChange={(checked) => {
-															return checked
-																? field.onChange([...field.value, item.id])
-																: field.onChange(
-																		field.value?.filter(
-																			(value) => value !== item.id
-																		)
-																  );
-														}}
-													/>
-												</FormControl>
-												<FormLabel className='font-normal'>
+												<FormLabel className='text-gray-700'>
 													{item.label}
 												</FormLabel>
 											</FormItem>
@@ -277,11 +236,13 @@ export default function Survey() {
 					control={form.control}
 					name='industries'
 					render={() => (
-						<FormItem>
+						<FormItem className='bg-gray-50 p-4 rounded-lg shadow-sm'>
 							<div className='mb-4'>
-								<FormLabel className='text-base'>Industry</FormLabel>
-								<FormDescription>
-									Do you have any favorite industries in mind?
+								<FormLabel className='block text-gray-700 text-2xl font-bold mb-2'>
+									Industries
+								</FormLabel>
+								<FormDescription className='text-gray-600 text-xl'>
+									Which industries are you interested in?
 								</FormDescription>
 							</div>
 							{industries.map((item) => (
@@ -293,7 +254,7 @@ export default function Survey() {
 										return (
 											<FormItem
 												key={item.id}
-												className='flex flex-row items-start space-x-3 space-y-0'
+												className='flex flex-row items-center space-x-3'
 											>
 												<FormControl>
 													<Checkbox
@@ -309,7 +270,7 @@ export default function Survey() {
 														}}
 													/>
 												</FormControl>
-												<FormLabel className='font-normal'>
+												<FormLabel className='text-gray-700'>
 													{item.label}
 												</FormLabel>
 											</FormItem>
@@ -321,7 +282,63 @@ export default function Survey() {
 						</FormItem>
 					)}
 				/>
-				<Button type='submit'>Submit</Button>
+				<FormField
+					control={form.control}
+					name='importantAspectsNewRole'
+					render={() => (
+						<FormItem className='bg-gray-50 p-4 rounded-lg shadow-sm'>
+							<div className='mb-4'>
+								<FormLabel className='block text-gray-700 text-2xl font-bold mb-2'>
+									Culture
+								</FormLabel>
+								<FormDescription className='text-gray-600 text-xl'>
+									Which 3 are most important to you in a new role?
+								</FormDescription>
+							</div>
+							{importantAspectsNewRole.map((item) => (
+								<FormField
+									key={item.id}
+									control={form.control}
+									name='importantAspectsNewRole'
+									render={({ field }) => {
+										return (
+											<FormItem
+												key={item.id}
+												className='flex flex-row items-center space-x-3'
+											>
+												<FormControl>
+													<Checkbox
+														checked={field.value?.includes(item.id)}
+														onCheckedChange={(checked) => {
+															return checked
+																? field.onChange([...field.value, item.id])
+																: field.onChange(
+																		field.value?.filter(
+																			(value) => value !== item.id
+																		)
+																  );
+														}}
+													/>
+												</FormControl>
+												<FormLabel className='text-gray-700'>
+													{item.label}
+												</FormLabel>
+											</FormItem>
+										);
+									}}
+								/>
+							))}
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				{/* Apply similar styling for other FormFields like importantAspectsNewRole and industries */}
+				<Button
+					type='submit'
+					className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'
+				>
+					Submit
+				</Button>
 			</form>
 		</Form>
 	);
