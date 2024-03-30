@@ -1,15 +1,17 @@
 import React from 'react'
 import getAllLayoffs from '../actions/getListings'
+import getCurrentUser from '../actions/getCurrentUser'
 
 type Props = {}
 
 const pages = async (props: Props) => {
-  const data = await getAllLayoffs();
+  const companyLayoffData = await getAllLayoffs();
+  const userData = await getCurrentUser();
   //getCurrentUser()
-  console.log(data);
+  console.log(companyLayoffData);
 
     // Process each row (object)
-    data.forEach((row) => {
+    companyLayoffData.forEach((row) => {
       // Access specific columns (properties) from the row
       const company = row.company; 
       const location = row.location;  
@@ -19,7 +21,7 @@ const pages = async (props: Props) => {
       const date = row.date;  
       const country = row.country;    
 
-      // Do something with the extracted data (e.g., display it in your UI)
+      // Do something with the extracted companyLayoffData (e.g., display it in your UI)
       console.log(`company: ${company}, location: ${location}, industry: ${industry},totalLaidOff: ${totalLaidOff},percentageLaidOff: ${percentageLaidOff}, date: ${date},country: ${country}`);
     });
     
@@ -35,11 +37,10 @@ const pages = async (props: Props) => {
           <th>LaidOff %</th>
           <th>Date</th>          
           <th>Country</th>          
-          {/* Add more column headers as needed */}
         </tr>
       </thead>
       <tbody>
-        {data.map((row) => (
+        {companyLayoffData.map((row) => (
           <tr key={row.id}>
             <td>{row.company}</td>
             <td>{row.location}</td>
