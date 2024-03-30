@@ -14,12 +14,13 @@ datasource db {
 model User {
   id String @id @default(auto()) @map("_id") @db.ObjectId
   username String @unique
-
   emailVerified DateTime?
   hashedPassword String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-
+  industries String[]
+  locations String[]
+  importantAspectsNewRole String[]
 }
 
 //USED FOR STORING THE OAUTH2 USERS
@@ -42,8 +43,8 @@ model Account {
 model Layoff {
   id                String   @id @default(auto()) @map("_id") @db.ObjectId
   company           String
-  location          String
-  industry          String
+  location          String?
+  industry          String?
   totalLaidOff      Int
   percentageLaidOff Float?   // Optional float, could be NaN or undefined in data
   date              String?
