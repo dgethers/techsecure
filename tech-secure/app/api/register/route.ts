@@ -6,11 +6,11 @@ export async function POST(req: Request) {
 	try {
 		const body = await req.json();
 
-		const { username, password } = body;
+		const { name, password } = body;
 
 		// Check if username and password are provided
-		if (!username || !password) {
-			return new NextResponse("Username and password are required", {
+		if (!name || !password) {
+			return new NextResponse("name and password are required", {
 				status: 400,
 			});
 		}
@@ -29,13 +29,13 @@ export async function POST(req: Request) {
 		// Create the user
 		const newUser = await prisma.user.create({
 			data: {
-				username,
+				name,
 				hashedPassword,
 			},
 			// Return only necessary fields
 			select: {
 				id: true,
-				username: true,
+				name: true,
 			},
 		});
 

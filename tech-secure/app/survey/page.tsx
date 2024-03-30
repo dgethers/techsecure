@@ -16,6 +16,8 @@ import {
 	FormMessage,
 } from "@/components/ui/form";
 import { toast } from "@/components/ui/use-toast";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const locations = [
 	{
@@ -153,6 +155,9 @@ const FormSchema = z.object({
 });
 
 export default function Survey() {
+	const { data: session } = useSession();
+	console.log(session);
+	const router = useRouter();
 	const form = useForm<z.infer<typeof FormSchema>>({
 		resolver: zodResolver(FormSchema),
 		defaultValues: {
