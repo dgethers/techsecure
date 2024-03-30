@@ -133,6 +133,11 @@ const FormSchema = z.object({
 export default function Survey() {
 	const form = useForm<z.infer<typeof FormSchema>>({
 		resolver: zodResolver(FormSchema),
+		defaultValues: {
+			locations: ["New York"],
+			industries: ["Healthcare"],
+			importantAspectsNewRole: ["career-growth"],
+		},
 	});
 
 	function onSubmit(data: z.infer<typeof FormSchema>, e: any) {
@@ -203,7 +208,7 @@ export default function Survey() {
 								<FormField
 									key={item.id}
 									control={form.control}
-									name='items'
+									name='importantAspectsNewRole'
 									render={({ field }) => {
 										return (
 											<FormItem
@@ -251,7 +256,7 @@ export default function Survey() {
 								<FormField
 									key={item.id}
 									control={form.control}
-									name='items'
+									name='industries'
 									render={({ field }) => {
 										return (
 											<FormItem

@@ -54,4 +54,10 @@ model Layoff {
   @@map("layoffs")
 }
 
+model Industries {
+  id                String   @id @default(auto()) @map("_id") @db.ObjectId
+ name String
+ 
+}
+
 
