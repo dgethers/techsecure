@@ -48,7 +48,16 @@ export default function LoginPage() {
 	function onSubmit(values: Input, e: any) {
 		// e.preventDefault();
 		console.log(values);
-		axios.post("/api/register", values);
+
+		signIn("credentials", {
+			...values,
+			redirect: false,
+		}).then((callback) => {
+			if (callback?.ok) {
+				console.log("logged in");
+				router.push("/survey");
+			}
+		});
 	}
 	form.watch();
 

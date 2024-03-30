@@ -15,34 +15,41 @@ export const authOptions: AuthOptions = {
 		CredentialsProvider({
 			name: "credentials",
 			credentials: {
-				email: { label: "email", type: "text" },
+				username: { label: "username", type: "text" },
 				password: { label: "password", type: "password" },
 			},
 			async authorize(credentials) {
-				if (!credentials?.email || !credentials?.password) {
+				try {
+					if (!credentials?.username || !credentials?.password) {
+						throw new Error("Username and password are required");
+					}
+
+					const user = await prisma.user.findUnique({
+						where: {
+							username: credentials.username,
+						},
+					});
+
+					if (!user || !user?.hashedPassword) {
+						throw new Error("Invalid credentials");
+					}
+
+					const isCorrectPassword = await bcrypt.compare(
+						credentials.password,
+						user.hashedPassword
+					);
+
+					if (!isCorrectPassword) {
+						throw new Error("Invalid credentials");
+					}
+
+					return user;
+				} catch (error) {
+					// Log the error for debugging
+					console.error("Authorization error:", error);
+					// Throw a generic error to prevent leaking sensitive information
 					throw new Error("Invalid credentials");
 				}
-
-				const user = await prisma.user.findUnique({
-					where: {
-						email: credentials.email,
-					},
-				});
-
-				if (!user || !user?.hashedPassword) {
-					throw new Error("Invalid credentials");
-				}
-
-				const isCorrectPassword = await bcrypt.compare(
-					credentials.password,
-					user.hashedPassword
-				);
-
-				if (!isCorrectPassword) {
-					throw new Error("Invalid credentials");
-				}
-
-				return user;
 			},
 		}),
 	],

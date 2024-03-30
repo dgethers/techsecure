@@ -47,7 +47,7 @@ export default function RegisterPage() {
 	function onSubmit(values: Input, e: any) {
 		// e.preventDefault();
 		console.log(values);
-		axios.post("/api/register", values);
+		axios.post("/api/login", values);
 	}
 	form.watch();
 
@@ -103,7 +103,7 @@ export default function RegisterPage() {
 					<p className='text-sm mb-2'>OR</p>
 
 					<p className='text-sm mb-2'>
-						Dont have an Account? <Link href='/register'>REGISTER HERE</Link>
+						Already have an Account? <Link href='/login'>LOGIN HERE</Link>
 					</p>
 				</CardFooter>
 			</Card>
