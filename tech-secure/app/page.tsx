@@ -11,6 +11,7 @@ export default function Home() {
 			callbackUrl: "/survey",
 		});
 	};
+
 	return (
 		<div>
 			<Button onClick={googleLogin}>GOOGLE LOG IN</Button>
