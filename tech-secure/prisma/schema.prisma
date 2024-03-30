@@ -42,8 +42,8 @@ model Account {
 model Layoff {
   id                String   @id @default(auto()) @map("_id") @db.ObjectId
   company           String
-  location          String
-  industry          String
+  location          String?
+  industry          String?
   totalLaidOff      Int
   percentageLaidOff Float?   // Optional float, could be NaN or undefined in data
   date              String?
