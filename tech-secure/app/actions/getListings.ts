@@ -1,21 +1,17 @@
 import prisma from "@/lib/prismadb";
 
-const getJobs = async () => {
+const getAllLayoffs = async () => {
 	try {
-		const jobs = await prisma.layoff.findMany({
-			// Automatically includes all scalar fields of Job
-			include: {
-				organization: true,
-				postedBy: true,
-				// Add other relations if needed
-			},
+		const layoffs = await prisma.layoff.findMany({
+			// This will fetch all documents from Layoff model
+			// No need to include relations unless they are defined in your model
 		});
 
-		return jobs;
-	} catch (err: any) {
-		console.error("Error fetching jobs:", err);
+		return layoffs;
+	} catch (err) {
+		console.error("Error fetching layoffs:", err);
 		return [];
 	}
 };
 
-export default getJobs;
+export default getAllLayoffs;
