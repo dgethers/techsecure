@@ -1,11 +1,11 @@
 import React from 'react'
-import getAllLayoffs from '../actions/getListings'
 import getCurrentUser from '../actions/getCurrentUser'
+import getFilteredListings from '../actions/getFilteredListings'
 
 type Props = {}
 
 const pages = async (props: Props) => {
-  const companyLayoffData = await getAllLayoffs();
+  const companyLayoffData = await getFilteredListings();
   const userData = await getCurrentUser();
   //getCurrentUser()
   console.log(companyLayoffData);
