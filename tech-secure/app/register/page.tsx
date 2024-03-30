@@ -33,7 +33,7 @@ import * as z from "zod";
 type Input = z.infer<typeof formSchema>;
 
 const formSchema = z.object({
-	username: z.string().min(2).max(50),
+	name: z.string().min(2).max(50),
 	password: z.string().min(2).max(50),
 });
 
@@ -63,7 +63,7 @@ export default function RegisterPage() {
 						<form onSubmit={form.handleSubmit(onSubmit)} className='space-y-4'>
 							<FormField
 								control={form.control}
-								name='username'
+								name='name'
 								render={({ field }) => (
 									<FormItem>
 										<FormLabel>Email</FormLabel>

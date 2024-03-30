@@ -15,18 +15,18 @@ export const authOptions: AuthOptions = {
 		CredentialsProvider({
 			name: "credentials",
 			credentials: {
-				username: { label: "username", type: "text" },
+				name: { label: "name", type: "text" },
 				password: { label: "password", type: "password" },
 			},
 			async authorize(credentials) {
 				try {
-					if (!credentials?.username || !credentials?.password) {
-						throw new Error("Username and password are required");
+					if (!credentials?.name || !credentials?.password) {
+						throw new Error("name and password are required");
 					}
 
 					const user = await prisma.user.findUnique({
 						where: {
-							username: credentials.username,
+							name: credentials.name,
 						},
 					});
 
