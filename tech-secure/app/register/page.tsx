@@ -47,7 +47,7 @@ export default function RegisterPage() {
 	function onSubmit(values: Input, e: any) {
 		// e.preventDefault();
 		console.log(values);
-		axios.post("/api/login", values);
+		axios.post("/api/register", values);
 	}
 	form.watch();
 
