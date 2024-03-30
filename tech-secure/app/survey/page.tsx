@@ -16,6 +16,7 @@ import {
 	FormMessage,
 } from "@/components/ui/form";
 import { toast } from "@/components/ui/use-toast";
+import axios from "axios";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
@@ -170,7 +171,11 @@ export default function Survey() {
 	function onSubmit(data: z.infer<typeof FormSchema>, e: any) {
 		e.preventDefault();
 		console.log(data);
+		// console.log(values);
+		axios.post("/api/updateUser", data);
+		router.push("/listings");
 	}
+
 	return (
 		<Form {...form}>
 			<form onSubmit={form.handleSubmit(onSubmit)} className='space-y-8'>
