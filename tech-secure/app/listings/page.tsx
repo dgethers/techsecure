@@ -16,14 +16,16 @@ const pages = async (props: Props) => {
       const company = row.company; 
       const location = row.location;  
       const industry = row.industry; 
-      const totalLaidOff = row.totalLaidOff;  
-      const percentageLaidOff = row.percentageLaidOff; 
+      const totalLaidOff = row.total_laid_off;  
+      const percentageLaidOff = row.percentage_laid_off; 
       const date = row.date;  
       const country = row.country;    
 
       // Do something with the extracted companyLayoffData (e.g., display it in your UI)
-      console.log(`company: ${company}, location: ${location}, industry: ${industry},totalLaidOff: ${totalLaidOff},percentageLaidOff: ${percentageLaidOff}, date: ${date},country: ${country}`);
+      //console.log(`company: ${company}, location: ${location}, industry: ${industry},totalLaidOff: ${totalLaidOff},percentageLaidOff: ${percentageLaidOff}, date: ${date},country: ${country}`);
     });
+
+    
     
   return (
     <div>
@@ -45,8 +47,8 @@ const pages = async (props: Props) => {
             <td>{row.company}</td>
             <td>{row.location}</td>
             <td>{row.industry}</td>
-            <td>{row.totalLaidOff}</td>
-            <td>{row.percentageLaidOff}</td>
+            <td>{row.total_laid_off}</td>
+            <td>{row.percentage_laid_off}</td>
             <td>{row.date}</td>
             <td>{row.country}</td>
           </tr>
