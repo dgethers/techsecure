@@ -8,7 +8,7 @@ export default function Home() {
 	const router = useRouter();
 	const googleLogin = () => {
 		signIn("google", {
-			// callbackUrl: "/",
+			callbackUrl: "/survey",
 		});
 	};
 	return (
