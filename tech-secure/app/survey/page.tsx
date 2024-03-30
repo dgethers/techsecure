@@ -22,7 +22,7 @@ import { useRouter } from "next/navigation";
 
 const locations = [
 	{
-		id: "New York",
+		id: "New-York",
 		label: "New York",
 	},
 	{
@@ -173,7 +173,7 @@ export default function Survey() {
 		console.log(data);
 		// console.log(values);
 		axios.post("/api/updateUser", data);
-		router.push("/listings");
+		// router.push("/listings");
 	}
 
 	return (
