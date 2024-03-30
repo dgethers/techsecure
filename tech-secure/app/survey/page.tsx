@@ -22,43 +22,43 @@ import { useRouter } from "next/navigation";
 
 const locations = [
 	{
-		id: "new-york",
+		id: "New-York",
 		label: "New York",
 	},
 	{
-		id: "tokyo",
+		id: "Tokyo",
 		label: "Tokyo",
 	},
 	{
-		id: "paris",
+		id: "Paris",
 		label: "Paris",
 	},
 	{
-		id: "london",
+		id: "London",
 		label: "London",
 	},
 	{
-		id: "dubai",
+		id: "Dubai",
 		label: "Dubai",
 	},
 	{
-		id: "singapore",
+		id: "Singapore",
 		label: "Singapore",
 	},
 	{
-		id: "shanghai",
+		id: "Shanghai",
 		label: "Shanghai",
 	},
 	{
-		id: "istanbul",
+		id: "Istanbul",
 		label: "Istanbul",
 	},
 	{
-		id: "sydney",
+		id: "Sydney",
 		label: "Sydney",
 	},
 	{
-		id: "rome",
+		id: "Rome",
 		label: "Rome",
 	},
 ];
@@ -173,7 +173,7 @@ export default function Survey() {
 		console.log(data);
 		// console.log(values);
 		axios.post("/api/updateUser", data);
-		router.push("/listings");
+		// router.push("/listings");
 	}
 
 	return (
