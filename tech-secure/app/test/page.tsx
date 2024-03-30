@@ -12,9 +12,9 @@ const Testpage = async (props: Props) => {
 	// const { data: session } = useSession();
 	// console.log(session);
 	// const data = await getAllIndustries();
-	// const layoffs = await getAllLayoffs();
+	const layoffs = await getAllLayoffs();
 	// console.log(data);
-	// console.log(layoffs);
+	console.log(layoffs);
 	return (
 		<div>
 			<div>hello</div>
