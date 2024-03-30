@@ -46,7 +46,7 @@ model Layoff {
   industry          String
   totalLaidOff      Int
   percentageLaidOff Float?   // Optional float, could be NaN or undefined in data
-  date              DateTime
+  date              String?
   stage             String
   country           String
   fundsRaised       Float?   // Optional float, could be NaN or undefined in data
