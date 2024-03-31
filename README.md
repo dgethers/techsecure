@@ -1,12 +1,3 @@
-# techsecure
-
-Job security is crucial to any employee's mental health and overall well-being.  With the increase in worry over job security and the unprecedented rate of change in the employment landscape favoring thoughtless companies, workers more than ever need the tools to help them maximize their job search efforts.
-
-TechSecure is a tool for tech workers to measure job security and incorporate layoff trends into their job search.  Using data from tech companies, TechSecure can look at a company's total layoffs, percentage layoffs, and user criteria to help tailor their job search and better plan their careers accordingly.
-
-Together we can restructure the employment landscape and empower the tech workforce.
-
-
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
